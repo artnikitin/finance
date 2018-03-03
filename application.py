@@ -268,12 +268,21 @@ def register():
         # hash the password
         hash_password = pwd_context.hash(request.form.get("password"))
 
+        print(request.form.get("username"))
+        print(hash_password)
+        
+        usernameZZZ = request.form.get("username")
+        
         # save new username and password
-        db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username=request.form.get("username"), hash=hash_password)
-        print(1)
+        db.execute("""INSERT INTO users (username, hash) 
+                      VALUES (:username, :hash_1)""", 
+                      username = usernameZZZ, 
+                      hash_1 = hash_password)
+        
+        
         # query for new user
-        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
-
+        rows = db.execute("SELECT * FROM users WHERE username = :username", username = request.form.get("username"))
+        print(rows)
         # save user to session
         session["user_id"] = rows[0]["id"]
 
