@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Interest (avg)</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td><b>{{ assets | usd }}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.shares }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.amount }}</td>
+                <td>{{ stock.price | usd }}</td>
+                {% if stock.interest > 0 %}
+                <td><font color="green">+{{ stock.interest }}%</font></td>
+                {% elif stock.interest < 0 %}
+                <td><font color="red">{{ stock.interest }}%</font></td>
+                {% else %}
+                <td>{{ stock.interest }}%</td>
+                {% endif %}
+                <td>{{ stock.total | usd }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">TOTAL REVENUE</td>
+                {% if total_revenue > 0 %}
+                <td><font color="green">+{{ total_revenue }}%</font></td>
+                {% elif total_revenue < 0 %}
+                <td><font color="red">{{ total_revenue }}%</font></td>
+                {% else %}
+                <td>{{ total_revenue }}%</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td colspan="5">CASH</td>
+                <td>{{ cash[0]["cash"] | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

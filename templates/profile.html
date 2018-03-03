@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('profile') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+            <p><h4>Change the order in which you want your stocks to be sold:</h4></p>
+            </div>
+            {% if sell_type == "FIFO" %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="FIFO" checked id="checkbox">FIFO (First In First Out)</label>
+            </div>
+            {% else %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="FIFO" id="checkbox">FIFO (First In First Out)</label>
+            </div>
+            {% endif %}
+            
+            {% if sell_type == "LIFO" %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="LIFO" checked id="checkbox">LIFO (Last In First Out)</label>
+            </div>
+            {% else %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="LIFO" id="checkbox">LIFO (Last In First Out)</label>
+            </div>
+            {% endif %}
+            
+            {% if sell_type == "MARGIN" %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="MARGIN" checked id="checkbox">MARGIN (Sell the most profitable stocks first)</label>
+            </div>
+            {% else %}
+            <div class="form-group">
+                <label><input type="radio" name="checkbox" value="MARGIN" id="checkbox">MARGIN (Sell the most profitable stocks first)</label>
+            </div>
+            {% endif %}
+            <div class="form-group">
+                <button class="btn btn-default" type="submit" id="checkbox">Save Changes</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
