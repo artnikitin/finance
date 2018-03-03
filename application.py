@@ -31,7 +31,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+db = SQL("postgres://rtftnncsrjvkls:f29bddfd0f3e72b02b61ad562531d83473978451f816e1a6dc7d03b083c0c288@ec2-54-221-220-59.compute-1.amazonaws.com:5432/d5a5bl2nfuatkj")
 
 @app.route("/")
 @login_required
@@ -249,7 +249,7 @@ def register():
         # check if fields aren't blank
         if not request.form.get("username"):
             return apology("missing username")
-        elif request.form.get("username").ispunct():
+        elif not request.form.get("username").isalpha() and not request.form.get("username").isdigit():
             return apology("username must not contain punctuation")
         if not request.form.get("password"):
             return apology("missing password")
@@ -269,8 +269,8 @@ def register():
         hash_password = pwd_context.hash(request.form.get("password"))
 
         # save new username and password
-        db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=hash_password)
-
+        db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username=request.form.get("username"), hash=hash_password)
+        print(1)
         # query for new user
         rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
