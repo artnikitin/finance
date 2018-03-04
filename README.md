@@ -7,7 +7,11 @@ For selling stocks you may choose 3 different algorithms, all of which are prese
 * LIFO (last in first out)
 * MARGIN (sell the most profitable stocks first)
 
-## Getting started
+## Academic Honesty
+
+If you're a CS50's student and not yet solved the problem set, be reasonable and don't browse and use this code in your assignments. My [certificate](https://courses.edx.org/certificates/e7ebacc2c4da4560abbc24e87e29e396) for motivation. Others interested are welcome.
+
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -46,7 +50,7 @@ Choose selling algorithm in profile settings:
 
 By default stocks data is downloaded from [Yahoo Finance](https://finance.yahoo.com), but it looks like they're not supporting the service anymore. Alternative source is [Alpha Vantage](https://www.alphavantage.co).
 
-## Built with
+## Built With
 
 * Flask
 * SQLAlchemy (CS50's library)
