@@ -2,6 +2,5 @@ Flask
 Flask-Session
 passlib
 SQLAlchemy
-gunicorn
 cs50
-psycopg2
+urllib3
