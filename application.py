@@ -31,7 +31,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # configure CS50 Library to use SQLite database
-db = SQL("postgres://rtftnncsrjvkls:f29bddfd0f3e72b02b61ad562531d83473978451f816e1a6dc7d03b083c0c288@ec2-54-221-220-59.compute-1.amazonaws.com:5432/d5a5bl2nfuatkj")
+db = SQL("sqlite:///finance.db")
 
 @app.route("/")
 @login_required
@@ -77,6 +77,11 @@ def index():
     
     # avoid adding zero values
     filtered_interest = db.execute("SELECT SUM(interest), COUNT(interest) FROM portfolio WHERE user_id = :user_id and interest NOT LIKE 0", user_id = session["user_id"])
+    
+    if filtered_interest[0]["SUM(interest)"] is None:
+        filtered_interest = db.execute("SELECT SUM(interest), COUNT(interest) FROM portfolio WHERE user_id = :user_id", user_id = session["user_id"])    
+    
+    print(filtered_interest)
     
     # count total revenue
     total_revenue = round((filtered_interest[0]["SUM(interest)"] / filtered_interest[0]["COUNT(interest)"]), 2)
