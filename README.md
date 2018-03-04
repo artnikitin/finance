@@ -1,6 +1,6 @@
 # CS50 Finance (stock yield)
 
-Implementation of Harvard's [CS50](https://cs50.harvard.edu)'s finance problem set. You can buy and sell stocks (sort of) and manage a portfolio. I've added a feature, that shows stock yield: how much you've earned (in %) from the time you've purchased the stocks.
+Implementation of Harvard's [CS50](https://cs50.harvard.edu)'s finance problem set. You can buy and sell stocks (sort of) and manage a portfolio. I've added a feature, that shows stock yield: how much you've earned (in %) from the time you've purchased the stocks. The interest is calculated for each transaction (one stock or a bundle).
 For selling stocks you may choose 3 different algorithms, all of which are present in the profile settings:
 
 * FIFO (first in first out)
@@ -32,7 +32,8 @@ $ flask run
 
 ## Usage
 
-Register and login as a new user. Check for stock prices in quote. Be sure to use stock symbols as GOOG, APPL, FB, NFLX etc. Buy and sell stocks through the links.
+Register and login as a new user. Check for stock prices in quote. Be sure to use stock symbols as GOOG, APPL, FB, NFLX etc. Buy and sell stocks through the links. View transactions on history page.
+
 Portfolio has yield counter in %:
 
 ![Alt text](examples/finance_portfolio.jpeg?raw=true)
