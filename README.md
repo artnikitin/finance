@@ -39,7 +39,7 @@ Portfolio has yield counter in %:
 
 Choose selling algorithm in profile settings:
 
-img
+![Alt text](examples/finance_profile.jpeg?raw=true)
 
 ## API
 
