@@ -35,7 +35,7 @@ $ flask run
 Register and login as a new user. Check for stock prices in quote. Be sure to use stock symbols as GOOG, APPL, FB, NFLX etc. Buy and sell stocks through the links.
 Portfolio has yield counter in %:
 
-![Alt text](/finance/examples/finance_portfolio.jpeg?raw=true)
+![Alt text](examples/finance_portfolio.jpeg?raw=true)
 
 Choose selling algorithm in profile settings:
 
